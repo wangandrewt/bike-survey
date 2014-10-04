@@ -9,5 +9,5 @@ setup(
     author='Andrew T Wang',
     author_email='wtandrew@terpmail.umd.edu',
     url='http://www.python.org/sigs/distutils-sig/',
-    install_requires=['Django<=1.7'],
+    install_requires=['Django==1.7'],
 )
