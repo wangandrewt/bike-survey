@@ -1,0 +1,6 @@
+<h1>{{ surveyInstance.name }}</h1>
+<ul>
+{% for biker in surveyInstance.biker_set.all %}
+    <li>{{ biker.count }} bikers: {{ biker.bikerGender }} {{ biker.bikerHelmet }} {{ biker.bikerLocation }}</li>
+{% endfor %}
+</ul>

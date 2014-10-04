@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     url(r'^$', 'views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^survey/', include('bikesurvey.urls')),
+    url(r'^survey/', include('bikesurvey.urls', namespace="bikesurvey")),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
