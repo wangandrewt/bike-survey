@@ -4,7 +4,7 @@ from bikesurvey.models import SurveyInstance, Biker
 
 class BikerInline(admin.TabularInline):
     model = Biker
-    extra = 5
+    extra = 2
 
 class SurveyInstanceAdmin(admin.ModelAdmin):
     fieldsets = [
