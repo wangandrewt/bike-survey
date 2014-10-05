@@ -1,11 +1,11 @@
-<h1>{{ surveyInstance.name }}</h1>
+<h1>{{ surveyinstance.name }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'bikesurvey:record' surveyInstance.id %}" method="post">
+<form action="{% url 'bikesurvey:record' surveyinstance.id %}" method="post">
 
 {% csrf_token %}
-{% for biker in surveyInstance.biker_set.all %}
+{% for biker in surveyinstance.biker_set.all %}
     <input type="radio" name="biker" id="biker{{ forloop.counter }}" value="{{ biker.id }}" />
     <label for="biker{{ forloop.counter }}">{{ biker.bikerGender }} {{ biker.bikerHelmet }} {{ biker.bikerLocation }}</label><br />
 {% endfor %}

@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse
+from django.views import generic
 
 from bikesurvey.models import SurveyInstance, Biker
 
@@ -11,10 +12,17 @@ def index(request):
     return HttpResponse(output)
 
 # Viewing one SurveyInstance
-def detail(request, surveyInstance_id):
-    surveyInstance = get_object_or_404(SurveyInstance, pk=surveyInstance_id)
-    return render(request, 'bikesurvey/detail.html', {'surveyInstance': surveyInstance})
+#def detail(request, surveyInstance_id):
+ #   surveyInstance = get_object_or_404(SurveyInstance, pk=surveyInstance_id)
+  #  return render(request, 'bikesurvey/detail.html', {'surveyInstance': surveyInstance})
 
+class DetailView(generic.DetailView):
+    model = SurveyInstance
+    template_name = 'bikesurvey/detail.html'
+
+class ResultsView(generic.DetailView):
+    model = SurveyInstance
+    template_name = 'bikesurvey/detail.html'
 
 def record(request, surveyInstance_id):
     p = get_object_or_404(SurveyInstance, pk=surveyInstance_id)
