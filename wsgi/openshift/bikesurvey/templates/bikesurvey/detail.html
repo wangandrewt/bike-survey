@@ -18,16 +18,16 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-{% block message %}{% endblock %}
-
 <form action="{% url 'bikesurvey:record' surveyinstance.id %}" method="post">
 
 {% csrf_token %}
 {% for biker in surveyinstance.biker_set.all %}
+    <p>
     <label for="biker{{ forloop.counter }}">
         <input type="radio" name="biker" id="biker{{ forloop.counter }}" value="{{ biker.id }}" />
-        {{ biker.bikerGender }} {{ biker.bikerHelmet }} {{ biker.bikerLocation }}
+        {{ biker }}
     </label>
+    </p>
 {% endfor %}
 <input type="submit" value="Add" />
 </form>

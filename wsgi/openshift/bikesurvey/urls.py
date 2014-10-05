@@ -4,7 +4,7 @@ from bikesurvey import views
 
 urlpatterns = patterns('',
     # ex: /bikesurvey/
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.AddSurveyInstanceView, name='index'),
     # ex: /bikesurvey/5/record/
     url(r'^(?P<surveyInstance_id>\d+)/record/$', views.record, name='record'),
     # ex: /bikesurvey/5/

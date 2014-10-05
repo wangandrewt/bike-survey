@@ -16,4 +16,4 @@ class Biker(models.Model):
     bikerLocation = models.CharField(max_length=50)
     count = models.IntegerField(default=0)
     def __unicode__(self):
-        return str(self.count)+" bikers with Gender:"+self.bikerGender+", Helmet:"+self.bikerHelmet+", Location:"+self.bikerLocation
+        return "Gender: "+self.bikerGender+", Helmet: "+self.bikerHelmet+", Location: "+self.bikerLocation
