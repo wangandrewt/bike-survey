@@ -1,7 +1,8 @@
 form p {
 	display: block;
 	border: 1px solid #c0c0c0;
-	padding: 8px 2px;
+	margin: 8px 2px;
+	padding: 4px 4px;
 	width: 100%;
 }
 input:focus,select:focus, textarea:focus {
