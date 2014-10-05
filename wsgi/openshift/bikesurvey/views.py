@@ -23,7 +23,7 @@ def record(request, surveyInstance_id):
     except (KeyError, Biker.DoesNotExist):
         # Redisplay the question voting form.
         return render(request, 'bikesurvey/detail.html', {
-            'question': p,
+            'surveyinstance': p,
             'error_message': "You didn't select a choice.",
         })
     else:
