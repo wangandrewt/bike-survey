@@ -32,4 +32,7 @@ def record(request, surveyInstance_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return render(request, 'bikesurvey/submit.html', {'surveyinstance': p})
+        return render(request, 'bikesurvey/detail.html', {
+            'surveyinstance': p,
+            'error_message': "This biker's info was recorded.",
+        })
