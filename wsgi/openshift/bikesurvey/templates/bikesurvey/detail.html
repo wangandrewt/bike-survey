@@ -1,6 +1,13 @@
+{% extends "bikesurvey/base.html" %}
+
+{% block title %}Record Biker Info{% endblock %}
+
+{% block content %}
 <h1>{{ surveyinstance.name }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% block message %}{% endblock %}
 
 <form action="{% url 'bikesurvey:record' surveyinstance.id %}" method="post">
 
@@ -11,3 +18,4 @@
 {% endfor %}
 <input type="submit" value="Add" />
 </form>
+{% endblock %}

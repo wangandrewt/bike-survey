@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse
 from django.views import generic
@@ -12,15 +12,7 @@ def index(request):
     return HttpResponse(output)
 
 # Viewing one SurveyInstance
-#def detail(request, surveyInstance_id):
- #   surveyInstance = get_object_or_404(SurveyInstance, pk=surveyInstance_id)
-  #  return render(request, 'bikesurvey/detail.html', {'surveyInstance': surveyInstance})
-
 class DetailView(generic.DetailView):
-    model = SurveyInstance
-    template_name = 'bikesurvey/detail.html'
-
-class ResultsView(generic.DetailView):
     model = SurveyInstance
     template_name = 'bikesurvey/detail.html'
 
@@ -40,4 +32,4 @@ def record(request, surveyInstance_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return HttpResponseRedirect(reverse('bikesurvey:detail', args=(p.id,)))
+        return render(request, 'bikesurvey/submit.html', {'surveyinstance': p})
