@@ -1,6 +1,13 @@
 <h1>{{ surveyInstance.name }}</h1>
-<ul>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'bikesurvey:record' surveyInstance.id %}" method="post">
+
+{% csrf_token %}
 {% for biker in surveyInstance.biker_set.all %}
-    <li>{{ biker.count }} bikers: {{ biker.bikerGender }} {{ biker.bikerHelmet }} {{ biker.bikerLocation }}</li>
+    <input type="radio" name="biker" id="biker{{ forloop.counter }}" value="{{ biker.id }}" />
+    <label for="biker{{ forloop.counter }}">{{ biker.bikerGender }} {{ biker.bikerHelmet }} {{ biker.bikerLocation }}</label><br />
 {% endfor %}
-</ul>
+<input type="submit" value="Add" />
+</form>
