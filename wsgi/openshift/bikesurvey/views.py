@@ -21,7 +21,10 @@ def AddSurveyInstanceView(request):
             p.biker_set.create(bikerGender='Female', bikerHelmet='Yes', bikerLocation='Sidewalk')
             p.biker_set.create(bikerGender='Female', bikerHelmet='No', bikerLocation='Street')
             p.biker_set.create(bikerGender='Female', bikerHelmet='No', bikerLocation='Sidewalk')
-            return HttpResponseRedirect(reverse('bikesurvey:detail', args=(), kwargs = {'pk': p.id}))
+            return render(request, 'bikesurvey/detail.html', {
+                'surveyinstance': p,
+                'error_message': "",
+            })
     else:
         form = forms.SurveyInstanceForm()
 
