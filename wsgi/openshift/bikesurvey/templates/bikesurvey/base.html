@@ -9,15 +9,19 @@
 
 	<!-- HTML5 Shiv -->
 	<!--[if lt IE 9]>
-		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<![endif]-->
 	
 	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'bikesurvey/forms.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'bikesurvey/style.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'bikesurvey/css/forms.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'bikesurvey/css/style.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'bikesurvey/css/pickadate/default.css' %}"  id="theme_base"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'bikesurvey/css/pickadate/default.date.css' %}"  id="theme_date"/>
 
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.formalize/1.2/jquery.formalize.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.formalize/1.2/jquery.formalize.min.js"></script>
+	<script type="text/javascript" src="{% static 'bikesurvey/js/picker.js' %}"></script>
+	<script type="text/javascript" src="{% static 'bikesurvey/js/picker.date.js' %}"></script>
 </head>
 
 <body>

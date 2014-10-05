@@ -15,5 +15,12 @@
                 </fieldset>
 	</form>
 </div>
-
+<script type="text/javascript">
+$(document).ready(function() {
+	$('input[name="date"]').pickadate({
+		format: 'yyyy-mm-dd',
+		formatSubmit: 'yyyy-mm-dd',
+	});
+});
+</script>
 {% endblock %}
