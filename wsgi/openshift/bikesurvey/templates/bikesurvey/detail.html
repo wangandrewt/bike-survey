@@ -3,7 +3,18 @@
 {% block title %}Record Biker Info{% endblock %}
 
 {% block content %}
-<h1>{{ surveyinstance.name }}</h1>
+<div>
+	<div style="display: block; float: left;">
+		<strong>You are counting bikes as: </strong>{{ surveyinstance.name }}<br>
+		<strong>In this location: </strong>{{ surveyinstance.location }}<br>
+		<strong>At this date: </strong>{{ surveyinstance.date }}<br>
+		
+	</div>
+	<form style="display: block; float: right;" action="/">
+		<button>Exit</a>
+	</form>
+</div>
+<br style="clear: both;">
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -13,8 +24,10 @@
 
 {% csrf_token %}
 {% for biker in surveyinstance.biker_set.all %}
-    <input type="radio" name="biker" id="biker{{ forloop.counter }}" value="{{ biker.id }}" />
-    <label for="biker{{ forloop.counter }}">{{ biker.bikerGender }} {{ biker.bikerHelmet }} {{ biker.bikerLocation }}</label><br />
+    <label for="biker{{ forloop.counter }}">
+        <input type="radio" name="biker" id="biker{{ forloop.counter }}" value="{{ biker.id }}" />
+        {{ biker.bikerGender }} {{ biker.bikerHelmet }} {{ biker.bikerLocation }}
+    </label>
 {% endfor %}
 <input type="submit" value="Add" />
 </form>

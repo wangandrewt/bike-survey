@@ -1,0 +1,17 @@
+label {
+	display: block;
+	border: 1px solid #c0c0c0;
+	padding: 8px 2px;
+	width: 100%;
+}
+input:focus,select:focus, textarea:focus {
+	box-shadow: #0055ff 0 0 5px 0;
+}
+
+button, input[type="reset"], input[type="submit"], input[type="button"] {
+	background-image: linear-gradient(#fff, #ddd);
+	border-radius: 6px;
+	border: 1px solid black;
+	color: #000;
+	display: inline-block;
+}

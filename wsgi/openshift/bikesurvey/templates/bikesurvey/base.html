@@ -13,11 +13,11 @@
 	<![endif]-->
 	
 	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'bikesurvey/forms.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'bikesurvey/style.css' %}" />
 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.formalize/1.2/jquery.formalize.min.js"></script>
 </head>
 
 <body>
@@ -35,18 +35,6 @@
 				<input type="submit" value="Submit" name="Start survey">
 			</fieldset>
 		</form>
-	</div>
-	
-	<div class="ui-grid-a">
-		<div class="ui-block-a">
-			<strong>You are counting bikes as: </strong>Name<br>
-			<strong>In this location: </strong>Location<br>
-			<strong>At this date: </strong>Date<br>
-			
-		</div>
-		<div class="ui-block-b">
-			<button>Exit</button>
-		</div>
 	</div>
 
 	<div id="">
