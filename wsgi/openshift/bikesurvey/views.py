@@ -7,6 +7,19 @@ from bikesurvey.models import SurveyInstance, Biker
 import forms
 
 
+# View all SurveyInstances
+def list(request):
+    list = SurveyInstance.objects.all()
+
+    bikers = set()
+    for biker in list[0].biker_set.all():
+        bikers.add(biker)
+        
+
+    context = {'list': list, 'bikers': bikers}
+    return render(request, 'bikesurvey/list.html', context)
+
+
 # Create one SurveyInstance
 def AddSurveyInstanceView(request):
     if request.method == "POST":

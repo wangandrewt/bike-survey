@@ -1,0 +1,44 @@
+{% extends "bikesurvey/base.html" %}
+
+{% block title %}List View{% endblock %}
+
+{% block content %}
+<h1>All survey results</h1>
+
+{% if list %}
+{% comment "IMPORTANT: Assumes that the bikers are in the same order for each survey instance" %}
+{% endcomment %}
+<table>
+    <thead>
+    <tr>
+       <td>Name</td>
+       <td>Date</td>
+       <td>Location</td>
+
+    {% for s in bikers %}
+        <td>
+        {{ s }}<br>
+        </td>
+    {% endfor %}
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for instance in list %}
+        <tr>
+            <td>{{ instance.name }}</td>
+            <td>{{ instance.date }}</td>
+            <td>{{ instance.location }}</td>
+            <ul>
+                {% for biker in instance.biker_set.all %}
+                <td>{{ biker.count }}</td>
+                {% endfor %}
+            </ul>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p>No biker information is available.</p>
+{% endif %}
+{% endblock %}

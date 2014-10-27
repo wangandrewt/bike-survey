@@ -1,9 +1,9 @@
 /* 
 Parts of this file are from:
 html5doctor.com Reset Stylesheet v1.6.1
-Last Updated: 2010-09-17
 Author: Richard Clark - http://richclarkdesign.com 
 */
+
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -26,7 +26,7 @@ time, mark, audio, video {
 }
 body {
     line-height:1.2;
-    font-size: 2em;
+    font-size: large;
 }
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section { 
@@ -77,4 +77,8 @@ table {
 /* change border colour to suit your needs */
 input, select {
     vertical-align:middle;
+}
+
+li {
+    margin-left: 1em;
 }

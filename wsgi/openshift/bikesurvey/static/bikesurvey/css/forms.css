@@ -4,8 +4,10 @@ form p {
 	margin: 8px 2px;
 	padding: 4px 4px;
 }
-input,select, textarea {
+input[type="text"], select, textarea {
 	font-size: 100%;
+	width: 100%;
+	display: block;
 }
 
 input:focus,select:focus, textarea:focus {
