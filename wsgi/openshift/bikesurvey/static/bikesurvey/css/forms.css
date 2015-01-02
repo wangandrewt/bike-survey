@@ -14,11 +14,16 @@ input:focus,select:focus, textarea:focus {
 	box-shadow: #0055ff 0 0 5px 0;
 }
 
+button:focus, input[type="reset"]:focus, input[type="submit"]:focus, input[type="button"]:focus {
+    box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
+}
+
 button, input[type="reset"], input[type="submit"], input[type="button"] {
 	background-image: linear-gradient(#fff, #ddd);
 	border-radius: 6px;
 	border: 1px solid black;
 	color: #000;
 	display: inline-block;
+	min-width: 80px;
 	font-size: 100%;
 }
