@@ -19,7 +19,14 @@ class BikerForm(forms.ModelForm):
     class Meta:
         model = Biker
         fields = ['bikerGender', 'bikerHelmet', 'bikerLocation']
+        labels = {
+            'bikerGender': 'Gender',
+            'bikerHelmet': 'Helmet',
+            'bikerLocation': 'Location',
+        }
         widgets = {
+            'bikerGender': forms.RadioSelect,
+            'bikerHelmet': forms.RadioSelect,
             'bikerLocation': forms.RadioSelect,
         }
 

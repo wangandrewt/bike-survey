@@ -34,9 +34,9 @@ class Biker(models.Model):
         ('Street', 'Street'),
     )
     surveyInstance = models.ForeignKey(SurveyInstance)
-    bikerGender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    bikerHelmet = models.CharField(max_length=1, choices=HELMET_CHOICES)
-    bikerLocation = models.CharField(max_length=30, choices=LOCATION_CHOICES)
+    bikerGender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=None)
+    bikerHelmet = models.CharField(max_length=1, choices=HELMET_CHOICES, default=None)
+    bikerLocation = models.CharField(max_length=30, choices=LOCATION_CHOICES, default=None)
     time = models.TimeField(default=datetime.now)
     def __unicode__(self):
         return "Gender: "+self.bikerGender+", Helmet: "+self.bikerHelmet+", Location: "+self.bikerLocation

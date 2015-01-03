@@ -1,4 +1,9 @@
-form p {
+form ul, li {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+form>ul>li {
 	display: block;
 	border: 1px solid #c0c0c0;
 	margin: 8px 2px;
