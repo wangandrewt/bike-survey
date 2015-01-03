@@ -4,3 +4,8 @@ body {
 table thead {
 	background: #dddddd;
 }
+.message {
+    display: block;
+    background: #dcdcdc;
+    padding: 8px;
+}

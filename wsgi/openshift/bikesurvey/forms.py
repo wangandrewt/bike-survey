@@ -18,7 +18,7 @@ class BikerForm(forms.ModelForm):
 
     class Meta:
         model = Biker
-        fields = ['surveyInstance', 'bikerGender', 'bikerHelmet', 'bikerLocation']
+        fields = ['bikerGender', 'bikerHelmet', 'bikerLocation']
         widgets = {
             'bikerLocation': forms.RadioSelect,
         }

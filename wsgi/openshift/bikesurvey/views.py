@@ -29,7 +29,7 @@ def AddSurveyInstanceView(request):
             p = form.save()
             return render(request, 'bikesurvey/detail.html', {
                 'surveyinstance': p,
-                'error_message': "",
+                'message': "",
             })
     else: # create a blank form
         form = forms.SurveyInstanceForm()
@@ -39,23 +39,24 @@ def AddSurveyInstanceView(request):
 
 # Add a Biker to a SurveyInstance
 def AddBikerView(request, surveyInstance_id):
-    p = get_object_or_404(SurveyInstance, pk=surveyInstance_id)
+    surveyInstance = get_object_or_404(SurveyInstance, pk=surveyInstance_id)
+    message = ""
+    
     if request.method == "POST":
         # create a form instance with data from the request
         form = forms.BikerForm(request.POST)
         if form.is_valid():
-            form.save()
-            return render(request, 'bikesurvey/detail.html', {
-                'surveyinstance': p,
-                'form': form,
-                'error_message': "",
-            })
+            biker = form.save(commit=False)
+            biker.surveyInstance = surveyInstance
+            biker.save()
+            message = "Biker added."
     else: # create a blank form
         form = forms.BikerForm()
 
     return render(request, "bikesurvey/detail.html", {
         'form': form,
-        'surveyinstance': p,
+        'surveyinstance': surveyInstance,
+        'message': message,
     })
 
 
