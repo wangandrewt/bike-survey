@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 
 class SurveyInstance(models.Model):
     LOCATION_CHOICES=(
@@ -13,7 +13,7 @@ class SurveyInstance(models.Model):
         ('Paint Branch Drive @ Lot 11b', 'Paint Branch Drive @ Lot 11b'),
         ('Campus Drive @ Adelphi Road', 'Campus Drive @ Adelphi Road'),
     )
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=100)
     location = models.CharField(max_length=200, choices=LOCATION_CHOICES)
     date = models.DateField()
     def __unicode__(self):
@@ -21,10 +21,22 @@ class SurveyInstance(models.Model):
 
 
 class Biker(models.Model):
+    GENDER_CHOICES=(
+        ('M', 'M'),
+        ('F', 'F'),
+    )
+    HELMET_CHOICES=(
+        ('Y', 'Yes'),
+        ('N', 'No'),
+    )
+    LOCATION_CHOICES=(
+        ('Sidewalk', 'Sidewalk'),
+        ('Street', 'Street'),
+    )
     surveyInstance = models.ForeignKey(SurveyInstance)
-    bikerGender = models.CharField(max_length=50)
-    bikerHelmet = models.CharField(max_length=50)
-    bikerLocation = models.CharField(max_length=50)
-    count = models.IntegerField(default=0)
+    bikerGender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    bikerHelmet = models.CharField(max_length=1, choices=HELMET_CHOICES)
+    bikerLocation = models.CharField(max_length=30, choices=LOCATION_CHOICES)
+    time = models.TimeField(default=datetime.now)
     def __unicode__(self):
         return "Gender: "+self.bikerGender+", Helmet: "+self.bikerHelmet+", Location: "+self.bikerLocation

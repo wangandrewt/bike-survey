@@ -23,31 +23,40 @@ def list(request):
 # Create one SurveyInstance
 def AddSurveyInstanceView(request):
     if request.method == "POST":
+        # create a form instance with data from the request
         form = forms.SurveyInstanceForm(request.POST)
         if form.is_valid():
             p = form.save()
-            p.biker_set.create(bikerGender='Male', bikerHelmet='Yes', bikerLocation='Street')
-            p.biker_set.create(bikerGender='Male', bikerHelmet='Yes', bikerLocation='Sidewalk')
-            p.biker_set.create(bikerGender='Male', bikerHelmet='No', bikerLocation='Street')
-            p.biker_set.create(bikerGender='Male', bikerHelmet='No', bikerLocation='Sidewalk')
-            p.biker_set.create(bikerGender='Female', bikerHelmet='Yes', bikerLocation='Street')
-            p.biker_set.create(bikerGender='Female', bikerHelmet='Yes', bikerLocation='Sidewalk')
-            p.biker_set.create(bikerGender='Female', bikerHelmet='No', bikerLocation='Street')
-            p.biker_set.create(bikerGender='Female', bikerHelmet='No', bikerLocation='Sidewalk')
             return render(request, 'bikesurvey/detail.html', {
                 'surveyinstance': p,
                 'error_message': "",
             })
-    else:
+    else: # create a blank form
         form = forms.SurveyInstanceForm()
 
     return render(request, "bikesurvey/create.html", {'form': form})
 
 
-# View one SurveyInstance
-class DetailView(generic.DetailView):
-    model = SurveyInstance
-    template_name = 'bikesurvey/detail.html'
+# Add a Biker to a SurveyInstance
+def AddBikerView(request, surveyInstance_id):
+    p = get_object_or_404(SurveyInstance, pk=surveyInstance_id)
+    if request.method == "POST":
+        # create a form instance with data from the request
+        form = forms.BikerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'bikesurvey/detail.html', {
+                'surveyinstance': p,
+                'form': form,
+                'error_message': "",
+            })
+    else: # create a blank form
+        form = forms.BikerForm()
+
+    return render(request, "bikesurvey/detail.html", {
+        'form': form,
+        'surveyinstance': p,
+    })
 
 
 # Record Biker info into a SurveyInstance
