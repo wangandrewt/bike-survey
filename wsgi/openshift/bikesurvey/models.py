@@ -22,8 +22,8 @@ class SurveyInstance(models.Model):
 
 class Biker(models.Model):
     GENDER_CHOICES=(
-        ('M', 'M'),
-        ('F', 'F'),
+        ('M', 'Male'),
+        ('F', 'Female'),
     )
     HELMET_CHOICES=(
         ('Y', 'Yes'),

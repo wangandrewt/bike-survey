@@ -3,14 +3,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 	<title>{% block title %}{% endblock %} - UMD Bike Survey</title>
-
-	<!-- HTML5 Shiv -->
-	<!--[if lt IE 9]>
-		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-	<![endif]-->
 	
 	{% load staticfiles %}
 	<link rel="shortcut icon" href="{% static 'bikesurvey/favicon.ico' %}" />
@@ -20,12 +14,13 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'bikesurvey/css/pickadate/default.css' %}"  id="theme_base"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'bikesurvey/css/pickadate/default.date.css' %}"  id="theme_date"/>
 
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="{% static 'bikesurvey/js/picker.js' %}"></script>
 	<script type="text/javascript" src="{% static 'bikesurvey/js/picker.date.js' %}"></script>
 </head>
 
 <body>
+    <h1>University of Maryland Bike Survey</h1>
 {% block content %}{% endblock %}
 <br style="clear: both;">
 </body>

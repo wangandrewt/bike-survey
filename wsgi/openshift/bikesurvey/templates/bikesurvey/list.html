@@ -3,37 +3,32 @@
 {% block title %}List View{% endblock %}
 
 {% block content %}
-<h1>All survey results</h1>
+<h2>All survey results</h2>
 
 {% if list %}
-{% comment "IMPORTANT: Assumes that the bikers are in the same order for each survey instance" %}
-{% endcomment %}
 <table>
     <thead>
-    <tr>
-       <td>Name</td>
-       <td>Date</td>
-       <td>Location</td>
-
-    {% for s in bikers %}
-        <td>
-        {{ s }}<br>
-        </td>
-    {% endfor %}
-    </tr>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Gender</th>
+            <th>Helmet</th>
+            <th>Location</th>
+            <th>Time</th>
+        </tr>
     </thead>
 
     <tbody>
     {% for instance in list %}
         <tr>
             <td>{{ instance.name }}</td>
-            <td>{{ instance.date }}</td>
             <td>{{ instance.location }}</td>
-            <ul>
-                {% for biker in instance.biker_set.all %}
-                <td>{{ biker.count }}</td>
-                {% endfor %}
-            </ul>
+            <td>{{ instance.date }}</td>
+            <td>{{ instance.bikerGender }}</td>
+            <td>{{ instance.bikerHelmet }}</td>
+            <td>{{ instance.bikerLocation }}</td>
+            <td>{{ instance.time }}</td>
         </tr>
     {% endfor %}
     </tbody>

@@ -1,11 +1,22 @@
 body {
 	padding: 10px;
 }
-table thead {
-	background: #dddddd;
-}
+
 .message {
     display: block;
     background: #dcdcdc;
     padding: 8px;
+}
+
+
+table td, table th {
+    padding: 8px;
+}
+
+table tbody tr {
+	border-bottom: #dddddd 1px solid;
+}
+
+table thead {
+    border-bottom: #151b54 2px solid;
 }

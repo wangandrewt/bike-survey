@@ -9,15 +9,14 @@ import forms
 
 # View all SurveyInstances
 def list(request):
-    list = SurveyInstance.objects.all()
+    results = Biker.objects.all()
+    for biker in results:
+        surveyInstance = biker.surveyInstance
+        biker.name = surveyInstance.name
+        biker.location = surveyInstance.location
+        biker.date = surveyInstance.date
 
-    bikers = set()
-    for biker in list[0].biker_set.all():
-        bikers.add(biker)
-        
-
-    context = {'list': list, 'bikers': bikers}
-    return render(request, 'bikesurvey/list.html', context)
+    return render(request, 'bikesurvey/list.html', {'list': results})
 
 
 # Create one SurveyInstance
