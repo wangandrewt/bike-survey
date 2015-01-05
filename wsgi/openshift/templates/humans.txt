@@ -15,6 +15,6 @@ Created by Andrew T Wang (wtandrew@umd.edu), a student at the University of
 # TECHNOLOGY COLOPHON
 
 	HTML5, CSS3
-	jQuery, Pickadate.js
+	jQuery, Pickadate.js, Tablesorter (http://tablesorter.com/docs/)
 	Python, Django and SQLite
 	Developed on Debian

@@ -20,3 +20,22 @@ table tbody tr {
 table thead {
     border-bottom: #151b54 2px solid;
 }
+table thead th {
+	background-color: #e6eeee;
+	padding-right: 20px;
+}
+table thead tr .header {
+	background-image: url(img/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table thead tr .headerSortUp {
+	background-image: url(img/asc.gif);
+}
+table thead tr .headerSortDown {
+	background-image: url(img/desc.gif);
+}
+table thead tr .headerSortDown, table thead tr .headerSortUp {
+    background-color: #8dbdd8;
+}
