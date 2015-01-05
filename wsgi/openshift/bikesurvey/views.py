@@ -8,7 +8,7 @@ import forms
 
 
 # View all SurveyInstances
-def list(request):
+def ListView(request):
     results = Biker.objects.all()
     for biker in results:
         surveyInstance = biker.surveyInstance
@@ -60,3 +60,6 @@ def AddBikerView(request, surveyInstance_id):
         'message': message,
     })
 
+# Closing message
+def ThanksView(request):
+    return render(request, 'bikesurvey/thanks.html')

@@ -3,10 +3,12 @@ from django.conf.urls import patterns, url
 from bikesurvey import views
 
 urlpatterns = patterns('',
-    # ex: /bikesurvey/
+    # /bikesurvey/
     url(r'^$', views.AddSurveyInstanceView, name='index'),
-    # ex: /bikesurvey/list/
-    url(r'^list/$', views.list, name='list'),
-    # ex: /bikesurvey/5/
+    # /bikesurvey/list/
+    url(r'^list/$', views.ListView, name='list'),
+    # /bikesurvey/5/
     url(r'^(?P<surveyInstance_id>\d+)/$', views.AddBikerView, name='detail'),
+    # /bikesurvey/thanks/
+    url(r'^thanks/$', views.ThanksView, name='thanks'),
 )
