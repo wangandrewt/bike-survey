@@ -7,6 +7,11 @@ from bikesurvey.models import SurveyInstance, Biker
 import forms
 
 
+# Welcome message
+def IndexView(request):
+    return render(request, 'bikesurvey/welcome.html')
+
+
 # View all SurveyInstances
 def ListView(request):
     results = Biker.objects.all()

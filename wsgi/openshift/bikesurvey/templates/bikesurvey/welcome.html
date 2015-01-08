@@ -1,0 +1,19 @@
+{% extends "bikesurvey/base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<p><strong>How to count:</strong> Be certain you are tallying bikes during your assigned time block.  As you observe bicyclists passing your post, note each one in the following form.  (Do not count motorized scooters, motorcycles, mopeds, or razor-style scooters, or bicycles being walked by a pedestrian.</p>
+<br>
+<ul>
+    <li>Gender: Male or Female. Do your best on this one.
+    <li>Helmet: Wearing any style of helmet or not wearing any helmet; helmets not atop a head should not be counted</li>
+    <li>Location: Riding in the street or the sidewalk; crossing street in a crosswalk should be counted as sidewalk.</li>
+</ul>
+<br>
+<p>Enter your information on the next page.</p>
+<br>
+<form style="display: block;" action="{% url 'bikesurvey:start' %}">
+    <button>Next</button>
+</form>
+{% endblock %}

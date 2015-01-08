@@ -3,12 +3,14 @@ from django.conf.urls import patterns, url
 from bikesurvey import views
 
 urlpatterns = patterns('',
-    # /bikesurvey/
-    url(r'^$', views.AddSurveyInstanceView, name='index'),
-    # /bikesurvey/list/
+    # /
+    url(r'^$', views.IndexView, name='index'),
+    # start/
+    url(r'^start/$', views.AddSurveyInstanceView, name='start'),
+    # list/
     url(r'^list/$', views.ListView, name='list'),
-    # /bikesurvey/5/
+    # 5/
     url(r'^(?P<surveyInstance_id>\d+)/$', views.AddBikerView, name='detail'),
-    # /bikesurvey/thanks/
+    # thanks/
     url(r'^thanks/$', views.ThanksView, name='thanks'),
 )
