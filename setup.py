@@ -2,12 +2,10 @@ import os
 from setuptools import setup
 
 
-setup(name='YourAppName',
-    version='1.0',
-    author='Your Name',
-    author_email='example@example.com',
-    url='http://www.example.com/',
-    description='Example Django Python deploy to OpenShift PaaS',
+setup(name='Bikesurvey',
+    version='1.0.0',
+    author='Andrew T Wang',
+    author_email='wtandrew@terpmail.umd.edu',
+    description='Records info for the University of Maryland bike survey',
     install_requires=['Django==1.7'],
 )
-

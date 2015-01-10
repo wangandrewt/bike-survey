@@ -1,17 +1,28 @@
 # humanstxt.org/
 
-Created by Andrew T Wang (wangandrewt@live.com), using code from
+A web application to record information about bikes on campus.
+
+Created by Andrew T Wang (wtandrew@umd.edu), a student at the University of
+ Maryland, College Park for the Department of Transportation Services and the
+ Department of Sustainability
+
+Uses code from
  OpenShift (https://github.com/openshift/django-example) and
  Appsembler (https://github.com/appsembler/paasbakeoff/tree/openshift)
 
 
 # THANKS
 
-	Some People (email@localhost)
+	Mark Stewart (stewartm@umd.edu)
+	Anna K McLaughlin (annamc@umd.edu)
+	Valerie Goubeau (vgoubeau@umd.edu)
 
 
 # TECHNOLOGY COLOPHON
 
 	HTML5, CSS3
+	jQuery, Pickadate.js, Tablesorter (http://tablesorter.com/docs/)
 	Python, Django and SQLite
 	Developed on Debian
+
+
