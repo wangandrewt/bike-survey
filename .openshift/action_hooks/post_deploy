@@ -2,3 +2,21 @@
 # This is a simple post deploy hook executed after your application 
 # is deployed and started.  This script gets executed directly, so 
 # it could be python, php, ruby, etc.
+
+source $OPENSHIFT_HOMEDIR/python/virtenv/bin/activate
+
+if [ ! -f $OPENSHIFT_DATA_DIR/db.sqlite3 ]
+then
+    echo "Copying $OPENSHIFT_REPO_DIR/web/sqlite3.db to $OPENSHIFT_DATA_DIR"
+    cp "$OPENSHIFT_REPO_DIR"web/db.sqlite3 $OPENSHIFT_DATA_DIR
+    echo "Executing 'python $OPENSHIFT_REPO_DIR/manage.py syncdb --noinput'"
+    python "$OPENSHIFT_REPO_DIR"manage.py syncdb --noinput
+    echo "Executing 'python $OPENSHIFT_REPO_DIR/web/secure_db.py | tee ${OPENSHIFT_DATA_DIR}/CREDENTIALS'"
+    python "$OPENSHIFT_REPO_DIR"web/secure_db.py | tee ${OPENSHIFT_DATA_DIR}/CREDENTIALS
+else
+    echo "Executing 'python $OPENSHIFT_REPO_DIR/manage.py syncdb --noinput'"
+    python "$OPENSHIFT_REPO_DIR"manage.py syncdb --noinput
+fi
+
+echo "Executing 'python $OPENSHIFT_REPO_DIR/manage.py collectstatic --noinput'"
+python "$OPENSHIFT_REPO_DIR"manage.py collectstatic --noinput

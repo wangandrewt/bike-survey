@@ -1,8 +1,5 @@
-*.py[co]
-*.sw[po]
-*.bak
-*.orig
-*~
-.project
-.pydevproject
-venv
+*.pyc
+*.pyo
+.DS_Store
+pyvenv/
+snapshots/

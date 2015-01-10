@@ -1,0 +1,17 @@
+# humanstxt.org/
+
+Created by Andrew T Wang (wangandrewt@live.com), using code from
+ OpenShift (https://github.com/openshift/django-example) and
+ Appsembler (https://github.com/appsembler/paasbakeoff/tree/openshift)
+
+
+# THANKS
+
+	Some People (email@localhost)
+
+
+# TECHNOLOGY COLOPHON
+
+	HTML5, CSS3
+	Python, Django and SQLite
+	Developed on Debian

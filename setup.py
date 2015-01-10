@@ -1,13 +1,13 @@
-#!/usr/bin/env python
-
+import os
 from setuptools import setup
 
-setup(
-    name='bikesurvey',
+
+setup(name='YourAppName',
     version='1.0',
-    description='OpenShift App',
-    author='Andrew T Wang',
-    author_email='wtandrew@terpmail.umd.edu',
-    url='http://www.python.org/sigs/distutils-sig/',
+    author='Your Name',
+    author_email='example@example.com',
+    url='http://www.example.com/',
+    description='Example Django Python deploy to OpenShift PaaS',
     install_requires=['Django==1.7'],
 )
+
