@@ -29,6 +29,10 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('.message').delay(200).fadeOut(350).fadeIn(350);
+    // All buttons load new page
+    $('button, input[type="submit"], input[type="button"]').click(function() {
+            $(this).after('<img style="height: 1.1em;" src="{% static 'bikesurvey/loading.gif' %}" alt="Loading">')
+    });
 });
 </script>
 </body>
