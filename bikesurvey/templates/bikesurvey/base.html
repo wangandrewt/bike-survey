@@ -33,6 +33,9 @@ $(document).ready(function() {
     $('button, input[type="submit"], input[type="button"]').click(function() {
             $(this).after('<img style="height: 1.1em;" src="{% static 'bikesurvey/loading.gif' %}" alt="Loading">')
     });
+    // Preload loading image
+    img1 = new Image();
+    img1.src = "{% static 'bikesurvey/loading.gif' %}";
 });
 </script>
 </body>
