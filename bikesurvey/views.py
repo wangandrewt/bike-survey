@@ -9,7 +9,22 @@ import forms
 
 # Welcome message
 def IndexView(request):
-    return render(request, 'bikesurvey/welcome.html')
+    message = ""
+    
+    if request.method == 'POST':
+        form = forms.WelcomeForm(request.POST)
+        if form.is_valid():
+            if (bool(int(form.cleaned_data
+                    ['I_have_read_and_understand_the_instructions_above']))
+                    == True):
+                return redirect('bikesurvey:start')
+    # create a blank form
+    form = forms.WelcomeForm()
+    
+    return render(request, 'bikesurvey/welcome.html', {
+        'form': form,
+        'message': message
+    })
 
 
 # View all SurveyInstances

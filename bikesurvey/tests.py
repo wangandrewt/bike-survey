@@ -7,12 +7,31 @@ from bikesurvey import views
 from bikesurvey.models import SurveyInstance, Biker
 
 
-class WelcomeViewTest(TestCase):
+class IndexViewTest(TestCase):
 
     def test_uses_correct_template(self):
         url = reverse('bikesurvey:index')
         response = self.client.get(url)
         self.assertTemplateUsed(response, 'bikesurvey/welcome.html')
+        
+    def test_must_agree_to_continue(self):
+        request = HttpRequest()
+        request.method = 'GET'
+        response = views.IndexView(request)
+        self.assertTemplateUsed(response, 'bikesurvey/welcome.html')
+        
+        request = HttpRequest()
+        request.method = 'POST'
+        response = views.IndexView(request)
+        self.assertTemplateUsed(response, 'bikesurvey/welcome.html')
+        
+        url = reverse('bikesurvey:index')
+        response = self.client.post(url, {'I_have_read_and_understand_the_instructions_above': '0'})
+        self.assertTemplateUsed(response, 'bikesurvey/welcome.html')
+        
+        url = reverse('bikesurvey:index')
+        response = self.client.post(url, {'I_have_read_and_understand_the_instructions_above': '1'})
+        self.assertRedirects(response, reverse('bikesurvey:start'))
 
 
 class AddSurveyInstanceViewTest(TestCase):

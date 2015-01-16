@@ -13,7 +13,11 @@
 <br>
 <p>Enter your information on the next page.</p>
 <br>
-<form style="display: block;" action="{% url 'bikesurvey:start' %}">
-    <button>Next</button>
+<form style="display: block;" action="" method="post">
+    {% csrf_token %}
+    <ul>
+{{ form.as_ul }}
+    </ul>
+    <input type="submit" value="Next" />
 </form>
 {% endblock %}
