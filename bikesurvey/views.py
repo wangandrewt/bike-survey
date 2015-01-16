@@ -18,6 +18,8 @@ def IndexView(request):
                     ['I_have_read_and_understand_the_instructions_above']))
                     == True):
                 return redirect('bikesurvey:start')
+            else:
+                message = "Please read the instructions and select Yes below."
     # create a blank form
     form = forms.WelcomeForm()
     
