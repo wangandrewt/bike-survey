@@ -12,14 +12,13 @@ def IndexView(request):
     message = ""
     
     if request.method == 'POST':
+        message = "Please read the instructions and select Yes below."
         form = forms.WelcomeForm(request.POST)
         if form.is_valid():
             if (bool(int(form.cleaned_data
                     ['I_have_read_and_understand_the_instructions_above']))
                     == True):
-                return redirect('bikesurvey:start')
-            else:
-                message = "Please read the instructions and select Yes below."
+                return redirect('bikesurvey:start') 
     # create a blank form
     form = forms.WelcomeForm()
     
