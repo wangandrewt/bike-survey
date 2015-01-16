@@ -72,9 +72,11 @@ def AddBikerView(request, surveyInstance_id):
             biker.surveyInstance = surveyInstance
             biker.save()
             message = "Biker added."
-    
-    # create a blank form
-    form = forms.BikerForm()
+            # create a blank form
+            form = forms.BikerForm()
+    else:
+        # create a blank form
+        form = forms.BikerForm()
 
     return render(request, "bikesurvey/detail.html", {
         'form': form,
