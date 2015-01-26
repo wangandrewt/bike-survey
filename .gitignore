@@ -1,5 +1,4 @@
 *.pyc
 *.pyo
 .DS_Store
-pyvenv/
 snapshots/
