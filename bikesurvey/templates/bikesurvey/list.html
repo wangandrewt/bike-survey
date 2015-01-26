@@ -11,11 +11,11 @@
         <tr>
             <th>Name</th>
             <th>Location</th>
-            <th>Date</th>
             <th>Gender</th>
             <th>Helmet</th>
             <th>Location</th>
-            <th>Time</th>
+            <th>Date (YYYY-MM-DD)</th>
+            <th>Time (24 hr.)</th>
         </tr>
     </thead>
 
@@ -24,11 +24,11 @@
         <tr>
             <td>{{ instance.name }}</td>
             <td>{{ instance.location }}</td>
-            <td>{{ instance.date }}</td>
             <td>{{ instance.bikerGender }}</td>
             <td>{{ instance.bikerHelmet }}</td>
             <td>{{ instance.bikerLocation }}</td>
-            <td>{{ instance.time }}</td>
+            <td>{{ instance.date|date:"Y-m-d" }}</td>
+            <td>{{ instance.time|date:"H:i" }}</td>
         </tr>
     {% endfor %}
     </tbody>

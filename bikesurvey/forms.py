@@ -16,7 +16,7 @@ class SurveyInstanceForm(forms.ModelForm):
 
     class Meta:
         model = SurveyInstance
-        fields = ['name', 'location', 'date']
+        fields = ['name', 'location']
         widgets = {
             'location': forms.Select,
         }

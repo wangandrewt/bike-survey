@@ -8,10 +8,10 @@ class BikerInline(admin.TabularInline):
 
 class SurveyInstanceAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['name', 'date', 'location']}),
+        (None,               {'fields': ['name', 'location']}),
     ]
     inlines = [BikerInline]
-    list_display = ('name', 'date', 'location')
-    list_filter = ['date']
+    list_display = ('name', 'location')
+    list_filter = ['location']
     
 admin.site.register(SurveyInstance, SurveyInstanceAdmin)

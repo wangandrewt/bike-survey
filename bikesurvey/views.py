@@ -35,7 +35,6 @@ def ListView(request):
         surveyInstance = biker.surveyInstance
         biker.name = surveyInstance.name
         biker.location = surveyInstance.location
-        biker.date = surveyInstance.date
 
     return render(request, 'bikesurvey/list.html', {'list': results})
 

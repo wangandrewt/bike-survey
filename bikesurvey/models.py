@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 
 class SurveyInstance(models.Model):
     LOCATION_CHOICES=(
@@ -15,9 +14,8 @@ class SurveyInstance(models.Model):
     )
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=200, choices=LOCATION_CHOICES)
-    date = models.DateField()
     def __unicode__(self):
-        return self.name + " at " + self.location + " at " + self.date.strftime('%Y-%m-%d')
+        return self.name + " at " + self.location
 
 
 class Biker(models.Model):
@@ -37,6 +35,7 @@ class Biker(models.Model):
     bikerGender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=None)
     bikerHelmet = models.CharField(max_length=1, choices=HELMET_CHOICES, default=None)
     bikerLocation = models.CharField(max_length=30, choices=LOCATION_CHOICES, default=None)
-    time = models.TimeField(default=datetime.now)
+    time = models.TimeField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True)
     def __unicode__(self):
-        return "Gender: "+self.bikerGender+", Helmet: "+self.bikerHelmet+", Location: "+self.bikerLocation
+        return "Gender: "+self.bikerGender+", Helmet: "+self.bikerHelmet+", Location: "+self.bikerLocation+" at "+self.date.strftime('%Y-%m-%d')+" at "+self.time.strftime('%H:%M')

@@ -13,6 +13,7 @@ class IndexViewTest(TestCase):
         url = reverse('bikesurvey:index')
         response = self.client.get(url)
         self.assertTemplateUsed(response, 'bikesurvey/welcome.html')
+        self.assertEqual(response.status_code, 200)
         
     def test_must_agree_to_continue(self):
         request = HttpRequest()
@@ -34,12 +35,22 @@ class IndexViewTest(TestCase):
         self.assertRedirects(response, reverse('bikesurvey:start'))
 
 
+class ListViewTest(TestCase):
+
+    def test_uses_correct_template(self):
+        url = reverse('bikesurvey:list')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'bikesurvey/list.html')
+        self.assertEqual(response.status_code, 200)
+
+
 class AddSurveyInstanceViewTest(TestCase):
     
     def test_uses_correct_template(self):
         url = reverse('bikesurvey:start')
         response = self.client.get(url)
         self.assertTemplateUsed(response, 'bikesurvey/create.html')
+        self.assertEqual(response.status_code, 200)
     
     def test_no_blank_surveyInstance_created(self):
         request = HttpRequest()
@@ -57,16 +68,17 @@ class AddBikerViewTest(TestCase):
     
     def test_uses_correct_template(self):
         # Create new SurveyInstance
-        s = SurveyInstance(date=timezone.now(), name="A", location='Regents Drive @ Rt. 1')
+        s = SurveyInstance(name="A", location='Regents Drive @ Rt. 1')
         s.save()
         
         url = reverse('bikesurvey:detail', kwargs={'surveyInstance_id': s.id})
         response = self.client.get(url)
         self.assertTemplateUsed(response, 'bikesurvey/detail.html')
+        self.assertEqual(response.status_code, 200)
     
     def test_no_blank_biker_created(self):
         # Create new SurveyInstance
-        s = SurveyInstance(date=timezone.now(), name="A", location='Regents Drive @ Rt. 1')
+        s = SurveyInstance(name="A", location='Regents Drive @ Rt. 1')
         s.save()
         
         request = HttpRequest()
@@ -86,4 +98,5 @@ class ThanksViewTest(TestCase):
         url = reverse('bikesurvey:thanks')
         response = self.client.get(url)
         self.assertTemplateUsed(response, 'bikesurvey/thanks.html')
+        self.assertEqual(response.status_code, 200)
 
