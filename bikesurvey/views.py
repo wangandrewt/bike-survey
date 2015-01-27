@@ -85,7 +85,7 @@ def AddBikerView(request, surveyInstance_id):
     })
 
 
-# Add comments about survey location
+# Add comments about survey location and time
 def CommentsView(request, surveyInstance_id):
     surveyInstance = get_object_or_404(SurveyInstance, pk=surveyInstance_id)
     message = ""
