@@ -7,6 +7,14 @@ from bikesurvey import views
 from bikesurvey.models import SurveyInstance, Biker
 
 
+class Helpers(object):
+    @staticmethod
+    def create_new_surveyInstance():
+        s = SurveyInstance(name="A", location='Regents Drive @ Rt. 1')
+        s.save()
+        return s
+        
+
 class IndexViewTest(TestCase):
 
     def test_uses_correct_template(self):
@@ -67,9 +75,7 @@ class AddSurveyInstanceViewTest(TestCase):
 class AddBikerViewTest(TestCase):
     
     def test_uses_correct_template(self):
-        # Create new SurveyInstance
-        s = SurveyInstance(name="A", location='Regents Drive @ Rt. 1')
-        s.save()
+        s = Helpers.create_new_surveyInstance()
         
         url = reverse('bikesurvey:detail', kwargs={'surveyInstance_id': s.id})
         response = self.client.get(url)
@@ -77,9 +83,7 @@ class AddBikerViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
     
     def test_no_blank_biker_created(self):
-        # Create new SurveyInstance
-        s = SurveyInstance(name="A", location='Regents Drive @ Rt. 1')
-        s.save()
+        s = Helpers.create_new_surveyInstance()
         
         request = HttpRequest()
         request.method = 'GET'
@@ -90,6 +94,17 @@ class AddBikerViewTest(TestCase):
         request.method = 'POST'
         views.AddBikerView(request, s.id)
         self.assertEqual(Biker.objects.count(), 0)
+
+
+class CommentsViewTest(TestCase):
+
+    def test_uses_correct_template(self):
+        s = Helpers.create_new_surveyInstance()
+        
+        url = reverse('bikesurvey:comments', kwargs={'surveyInstance_id': s.id})
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'bikesurvey/comments.html')
+        self.assertEqual(response.status_code, 200)
 
 
 class ThanksViewTest(TestCase):

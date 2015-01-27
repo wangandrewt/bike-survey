@@ -35,6 +35,7 @@ def ListView(request):
         surveyInstance = biker.surveyInstance
         biker.name = surveyInstance.name
         biker.location = surveyInstance.location
+        biker.comments = surveyInstance.comments
 
     return render(request, 'bikesurvey/list.html', {'list': results})
 
@@ -79,10 +80,32 @@ def AddBikerView(request, surveyInstance_id):
 
     return render(request, "bikesurvey/detail.html", {
         'form': form,
-        'surveyinstance': surveyInstance,
+        'surveyInstance': surveyInstance,
         'message': message,
     })
+
+
+# Add comments about survey location
+def CommentsView(request, surveyInstance_id):
+    surveyInstance = get_object_or_404(SurveyInstance, pk=surveyInstance_id)
+    message = ""
+    
+    if request.method == "POST":
+        # create a form instance with data from the request
+        form = forms.SurveyInstanceCommentsForm(request.POST, instance=surveyInstance)
+        if form.is_valid():
+            form.save()
+            return redirect('bikesurvey:thanks')
+    else: # create a blank form
+        form = forms.SurveyInstanceCommentsForm(None, instance=surveyInstance)
+    
+    return render(request, "bikesurvey/comments.html", {
+        'form': form,
+        'message': message
+    })
+
 
 # Closing message
 def ThanksView(request):
     return render(request, 'bikesurvey/thanks.html')
+

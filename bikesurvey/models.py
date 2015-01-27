@@ -14,6 +14,7 @@ class SurveyInstance(models.Model):
     )
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=200, choices=LOCATION_CHOICES)
+    comments = models.TextField(blank=True)
     def __unicode__(self):
         return self.name + " at " + self.location
 

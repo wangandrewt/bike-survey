@@ -16,6 +16,7 @@
             <th>Location</th>
             <th>Date (YYYY-MM-DD)</th>
             <th>Time (24 hr.)</th>
+            <th>Comments</th>
         </tr>
     </thead>
 
@@ -29,6 +30,7 @@
             <td>{{ instance.bikerLocation }}</td>
             <td>{{ instance.date|date:"Y-m-d" }}</td>
             <td>{{ instance.time|date:"H:i" }}</td>
+            <td>{{ instance.comments }}</td>
         </tr>
     {% endfor %}
     </tbody>

@@ -1,0 +1,20 @@
+{% extends "bikesurvey/base.html" %}
+
+{% block title %}Comments{% endblock %}
+
+{% block content %}
+
+{% if message %}<p class="message"><strong>{{ message }}</strong></p>{% endif %}
+<br>
+<p>Please make a note of any factors that may have impacted bicycling at your location today (weather, construction, special event&#8230;)</p>
+<br>
+<div id="">
+	<form action="" method="post">
+		{% csrf_token %}
+        <ul>
+{{ form.as_ul }}
+        </ul>
+        <input type="submit" value="Submit">
+	</form>
+</div>
+{% endblock %}

@@ -5,10 +5,10 @@
 {% block content %}
 <div>
 	<div style="display: block; float: left;">
-		<strong>You are counting bikes as: </strong>{{ surveyinstance.name }}<br>
-		<strong>In this location: </strong>{{ surveyinstance.location }}<br>
+		<strong>You are counting bikes as: </strong>{{ surveyInstance.name }}<br>
+		<strong>In this location: </strong>{{ surveyInstance.location }}<br>
 	</div>
-	<form style="display: block; float: right;" action="{% url 'bikesurvey:thanks' %}">
+	<form style="display: block; float: right;" action="{% url 'bikesurvey:comments' surveyInstance_id=surveyInstance.id %}">
 		<button>Finished Counting</button>
 	</form>
 </div>

@@ -23,6 +23,8 @@ urlpatterns = patterns("",
     url(r'^list/$', views.ListView, name='list'),
     # 5/
     url(r'^(?P<surveyInstance_id>\d+)/$', views.AddBikerView, name='detail'),
+    # 5/comments/
+    url(r'^(?P<surveyInstance_id>\d+)/comments/$', views.CommentsView, name='comments'),
     # thanks/
     url(r'^thanks/$', views.ThanksView, name='thanks'),
 )

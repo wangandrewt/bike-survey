@@ -38,3 +38,10 @@ class BikerForm(forms.ModelForm):
             'bikerLocation': forms.RadioSelect,
         }
 
+
+class SurveyInstanceCommentsForm(forms.ModelForm):
+
+    class Meta:
+        model = SurveyInstance
+        fields = ['comments']
+
