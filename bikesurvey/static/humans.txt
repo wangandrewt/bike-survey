@@ -2,9 +2,9 @@
 
 A web application to record information about bikes on campus.
 
-Created by Andrew T Wang (wtandrew@umd.edu), a student at the University of
- Maryland, College Park for the Department of Transportation Services and the
- Department of Sustainability
+Created by Andrew T Wang (wtandrew@terpmail.umd.edu), a student at the
+ University of Maryland, College Park for the Department of Transportation
+ Services and the Department of Sustainability
 
 Uses code from
  OpenShift (https://github.com/openshift/django-example) and
