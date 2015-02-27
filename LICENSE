@@ -1,4 +1,16 @@
-Uses code from Tablesorter (http://tablesorter.com/docs/)
+Uses code from JBrendel's Django Random Primary
+    (https://github.com/jbrendel/django-randomprimary/)
+     
+    LICENSE:
+    Use as you wish, for whatever purpose. If you have any
+    improvement or ideas, it would be nice if you could share
+    those.
+
+    DISCLAIMER:
+    THE WORKS ARE WITHOUT WARRANTY
+
+
+Uses code from Tablesorter (http://tablesorter.com/)
 
     The MIT License (MIT)
     Copyright (c) 2014 Christian Bach
