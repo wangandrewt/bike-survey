@@ -1,3 +1,5 @@
+# This file has been modified from the original
+
 #!/bin/bash
 # This is a simple build script and will be executed on your CI system if 
 # available.  Otherwise it will execute while your application is stopped

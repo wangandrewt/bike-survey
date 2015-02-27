@@ -1,3 +1,5 @@
+# This file has been modified from the original
+
 import os
 from setuptools import setup
 

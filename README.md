@@ -6,9 +6,9 @@ Also see bikesurvey/static/humans.txt
 
 ## SQLite3 Database
 
-The database (web/db.sqlite3) can be deleted. Running "python manage.py runserver"
+The database (web/db.sqlite3) can be deleted. Running `python manage.py runserver`
 will create a new database automatically. Create the models in the database by 
-running "python manage.py migrate". Remember to create a new superuser.
+running `python manage.py migrate`. Remember to create a new superuser.
 
 ## Instructions
 
@@ -24,6 +24,6 @@ For Debian Linux
 
 See above for database info.
 
-[website URL]/ - Start here
-[website URL]/list/ - View records
-[website URL]/admin/ - Administrator interface
+ * [website URL]/ - Start here
+ * [website URL]/list/ - View records
+ * [website URL]/admin/ - Administrator interface
