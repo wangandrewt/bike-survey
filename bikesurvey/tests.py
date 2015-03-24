@@ -13,6 +13,13 @@ class Helpers(object):
         s = SurveyInstance(name="A", location='Regents Drive @ Rt. 1')
         s.save()
         return s
+
+    @staticmethod
+    def create_new_biker(survey):
+        b = Biker(surveyInstance = survey, bikerGender = 'M', bikerHelmet = 'N',
+                  bikerLocation = 'Sidewalk')
+        b.save()
+        return b
         
 
 class IndexViewTest(TestCase):
@@ -50,6 +57,29 @@ class ListViewTest(TestCase):
         response = self.client.get(url)
         self.assertTemplateUsed(response, 'bikesurvey/list.html')
         self.assertEqual(response.status_code, 200)
+
+    def test_one_biker(self):
+        Helpers.create_new_biker(Helpers.create_new_surveyInstance())
+        url = reverse('bikesurvey:list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'1 total', response.content)
+
+    def test_zero_bikers(self):
+        Biker.objects.all().delete()
+        url = reverse('bikesurvey:list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'0 total', response.content)
+
+    def test_two_bikers(self):
+        s = Helpers.create_new_surveyInstance()
+        Helpers.create_new_biker(s)
+        Helpers.create_new_biker(s)
+        url = reverse('bikesurvey:list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'2 total', response.content)
 
 
 class AddSurveyInstanceViewTest(TestCase):
