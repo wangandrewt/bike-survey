@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 # Django settings for OpenShift project.
 
-import imp, os
+import imp
+import os
 
 
 # a setting to determine whether we are running on OpenShift
 ON_OPENSHIFT = False
-if os.environ.has_key('OPENSHIFT_REPO_DIR'):
+if 'OPENSHIFT_REPO_DIR' in os.environ:
     ON_OPENSHIFT = True
 
 
@@ -20,9 +21,9 @@ else:
 TEMPLATE_DEBUG = DEBUG
 
 if DEBUG:
-    ALLOWED_HOSTS=[]
+    ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS=['*']
+    ALLOWED_HOSTS = ['*']
 
 
 # Local time zone for this installation. Choices can be found here:
@@ -55,14 +56,16 @@ USE_L10N = True
 ##############
 
 # Make a dictionary of default keys
-default_keys = { 'SECRET_KEY': 'F>3V%\8!iq;+1~#"yg2<]@&,JRl1m$uTr*AproudRiuph=Ufla' }
+default_keys = {
+    'SECRET_KEY': 'F>3V%\8!iq;+1~#"yg2<]@&,JRl1m$uTr*AproudRiuph=Ufla'}
 
 # Replace default keys with dynamic values if we are in OpenShift
 use_keys = default_keys
 if ON_OPENSHIFT:
     lib_path = os.environ['OPENSHIFT_REPO_DIR'] + 'web/'
     modinfo = imp.find_module('openshiftlibs', [lib_path])
-    openshiftlibs = imp.load_module('openshiftlibs', modinfo[0], modinfo[1], modinfo[2])
+    openshiftlibs = imp.load_module(
+        'openshiftlibs', modinfo[0], modinfo[1], modinfo[2])
     use_keys = openshiftlibs.openshift_secure(default_keys)
 
 # Make this unique, and don't share it with anybody.
@@ -74,27 +77,38 @@ SECRET_KEY = use_keys['SECRET_KEY']
 #############
 
 if ON_OPENSHIFT:
-    # os.environ['OPENSHIFT_MYSQL_DB_*'] variables can be used with databases created
-    # with rhc cartridge add (see /README in this git repo)
+    # os.environ['OPENSHIFT_MYSQL_DB_*'] variables can be used with databases
+    # created with rhc cartridge add (see /README in this git repo)
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': os.path.join(os.environ['OPENSHIFT_DATA_DIR'], 'db.sqlite3'),  # Or path to database file if using sqlite3.
+            # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or
+            # 'oracle'.
+            'ENGINE': 'django.db.backends.sqlite3',
+            # Or path to database file if using sqlite3.
+            'NAME': os.path.join(os.environ['OPENSHIFT_DATA_DIR'],
+                                 'db.sqlite3'),
             'USER': '',                      # Not used with sqlite3.
             'PASSWORD': '',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+            # Set to empty string for localhost. Not used with sqlite3.
+            'HOST': '',
+            # Set to empty string for default. Not used with sqlite3.
+            'PORT': '',
         }
     }
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': os.path.join(PROJECT_DIR, 'db.sqlite3'),  # Or path to database file if using sqlite3.
+            # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or
+            # 'oracle'.
+            'ENGINE': 'django.db.backends.sqlite3',
+            # Or path to database file if using sqlite3.
+            'NAME': os.path.join(PROJECT_DIR, 'db.sqlite3'),
             'USER': '',                      # Not used with sqlite3.
             'PASSWORD': '',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+            # Set to empty string for localhost. Not used with sqlite3.
+            'HOST': '',
+            # Set to empty string for default. Not used with sqlite3.
+            'PORT': '',
         }
     }
 
@@ -113,7 +127,8 @@ STATIC_URL = "/static/"
 # Example: "/home/media/media.lawrence.com/static/"
 
 if 'OPENSHIFT_REPO_DIR' in os.environ:
-    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', 'static')
+    STATIC_ROOT = os.path.join(
+        os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', 'static')
 else:
     STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
@@ -129,7 +144,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 
@@ -182,4 +197,3 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
-

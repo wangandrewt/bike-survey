@@ -6,8 +6,9 @@ class BikerInline(admin.TabularInline):
     model = Biker
     extra = 0
 
+
 class SurveyInstanceAdmin(admin.ModelAdmin):
     inlines = [BikerInline]
     list_filter = ['location']
-    
+
 admin.site.register(SurveyInstance, SurveyInstanceAdmin)
